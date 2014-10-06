@@ -1,0 +1,17 @@
+.center {
+  margin: 0 auto;
+}
+
+td {
+  padding: 30px;
+  border: 1px solid black;
+  margin: 0;
+}
+
+.cross {
+  background-color: grey;
+}
+
+.circle {
+  background-color: red;
+}

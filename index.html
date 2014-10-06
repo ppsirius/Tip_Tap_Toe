@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+
+  <link href="style.css" rel="stylesheet">
+  <script src="jquery-1.11.0.min.js"></script>
+  <script type="text/javascript">
+
+    var lastMove = 'circle';
+    var positions = [[0,0,0], [0,0,0], [0,0,0]]
+
+    $(document).ready(function() {
+          
+        $('td').one('click', function(){
+         // var x = Integer($(this).data('x'))
+         // var y = Integer($(this).data('y'))
+         // position[x][y] = lastMove;
+
+          if(lastMove === 'circle') {
+              $(this).addClass('cross').removeClass('circle');
+              lastMove = 'cross';
+          } else {
+              $(this).addClass('circle').removeClass('cross');
+              lastMove = 'circle';
+          }
+          checkVictory();
+        });
+
+
+
+    });
+  </script>
+  </head>
+  <body>
+   <div class="center">
+  
+    <table>
+      <tr>
+        <td data-x="0" data-y"0"></td>
+        <td id="c2"></td>
+        <td id="c3"></td>
+      </tr>
+      <tr>
+        <td id="c4"></td>
+        <td id="c5"></td>
+        <td id="c6"></td>
+      </tr>
+      <tr>
+        <td id="c7"></td>
+        <td id="c8"></td>
+        <td id="c9"></td>
+        </tr>
+    </table>
+
+    </div>
+
+  </body>
+  </html>
