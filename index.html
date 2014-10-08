@@ -7,25 +7,31 @@
   <script src="jquery-1.11.0.min.js"></script>
   <script type="text/javascript">
 
+    var player1 = []
+    var player2 = []
     var lastMove = 'circle';
-    var positions = [[0,0,0], [0,0,0], [0,0,0]]
 
     $(document).ready(function() {
-          
         $('td').one('click', function(){
-         // var x = Integer($(this).data('x'))
-         // var y = Integer($(this).data('y'))
-         // position[x][y] = lastMove;
-
           if(lastMove === 'circle') {
               $(this).addClass('cross').removeClass('circle');
               lastMove = 'cross';
+              nr_value = $(this).data("nr");
+              player1.push(nr_value);
           } else {
               $(this).addClass('circle').removeClass('cross');
               lastMove = 'circle';
+              nr_value = $(this).data("nr");
+              player2.push(nr_value);
           }
           checkVictory();
         });
+
+    function checkVictory() {
+      if(player1.inArray(0,1,2)) {
+       
+      };
+    }
 
 
 
@@ -37,19 +43,19 @@
   
     <table>
       <tr>
-        <td data-x="0" data-y"0"></td>
-        <td id="c2"></td>
-        <td id="c3"></td>
+        <td data-nr="0"></td>
+        <td data-nr="1"</td>
+        <td data-nr="2"></td>
       </tr>
       <tr>
-        <td id="c4"></td>
-        <td id="c5"></td>
-        <td id="c6"></td>
+        <td data-nr="3"></td>
+        <td data-nr="4"></td>
+        <td data-nr="5"></td>
       </tr>
       <tr>
-        <td id="c7"></td>
-        <td id="c8"></td>
-        <td id="c9"></td>
+        <td data-nr="6"></td>
+        <td data-nr="7"></td>
+        <td data-nr="8"></td>
         </tr>
     </table>
 
