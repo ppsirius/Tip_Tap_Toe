@@ -9,6 +9,8 @@
 
     var player1 = []
     var player2 = []
+    var win = [0, 1, 2]
+    //var winCombination = [[0,1,2] [3,4,5] [6,7,8] [0,3,6] [1,4,7] [2,5,8] [0,4,8] [2,4,6]]
     var lastMove = 'circle';
 
     $(document).ready(function() {
@@ -28,7 +30,8 @@
         });
 
     function checkVictory() {
-      if(player1.inArray(0,1,2)) {
+      if(player1 == win) {
+        alert('ok')
        
       };
     }
