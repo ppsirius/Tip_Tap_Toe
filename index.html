@@ -7,43 +7,46 @@
   <script src="jquery-1.11.0.min.js"></script>
   <script type="text/javascript">
 
-    var player1 = []
-    var player2 = []
-    var win = [0, 1, 2]
-    //var winCombination = [[0,1,2] [3,4,5] [6,7,8] [0,3,6] [1,4,7] [2,5,8] [0,4,8] [2,4,6]]
-    var lastMove = 'circle';
+    var board = [0,0,0,0,0,0,0,0,0];
+    var winCombinations = [[0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [0,4,8], [2,4,6]];
+    var currentSymbol = 'circle';
+    var movesCount = 0;
 
     $(document).ready(function() {
-        $('td').one('click', function(){
-          if(lastMove === 'circle') {
-              $(this).addClass('cross').removeClass('circle');
-              lastMove = 'cross';
-              nr_value = $(this).data("nr");
-              player1.push(nr_value);
-          } else {
-              $(this).addClass('circle').removeClass('cross');
-              lastMove = 'circle';
-              nr_value = $(this).data("nr");
-              player2.push(nr_value);
+      $('td').one('click', function(){
+        var clickedField = Number($(this).data("nr"));
+        if(currentSymbol === 'circle') {
+          currentSymbol = 'cross';
+        } else {
+          currentSymbol = 'circle';
+        }
+
+        $(this).addClass(currentSymbol);
+        board[clickedField] = currentSymbol;
+        movesCount += 1;
+        checkVictory();
+      });
+
+      var checkVictory = function() {
+        for(var i=0; i < winCombinations.length; i++){
+          var combination = winCombinations[i];
+          if(board[combination[0]] !== 0 && board[combination[0]] === board[combination[1]] && board[combination[1]] === board[combination[2]] && board[combination[2]] === board[combination[0]]) {
+            alert(currentSymbol + " won!!");
+            window.location.reload();
           }
-          checkVictory();
-        });
+        }
 
-    function checkVictory() {
-      if(player1 == win) {
-        alert('ok')
-       
-      };
-    }
-
-
-
+        if(movesCount === 9) {
+          alert('draw');
+          window.location.reload();
+        }
+      }
     });
   </script>
   </head>
   <body>
    <div class="center">
-  
+
     <table>
       <tr>
         <td data-nr="0"></td>
@@ -59,7 +62,7 @@
         <td data-nr="6"></td>
         <td data-nr="7"></td>
         <td data-nr="8"></td>
-        </tr>
+      </tr>
     </table>
 
     </div>
